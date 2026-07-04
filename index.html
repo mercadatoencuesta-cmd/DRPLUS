@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Dr.Plus - Aplicación Médica Integral</title>
+  <!-- Favicon e Iconos de Aplicación Web -->
+  <link rel="icon" type="image/png" href="/DRPLUS/logo.png">
+  <link rel="apple-touch-icon" href="/DRPLUS/logo.png">
+  <!-- Manifest para PWA / AppWeb Instalable -->
+  <link rel="manifest" href="/DRPLUS/manifest.json">
+  <!-- Colores de barra de navegación del celular (Chrome/Safari) -->
+  <meta name="theme-color" content="#0052cc">
+  <!-- Optimizaciones adicionales para iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Dr.Plus">
+
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Catcher de errores para depurar en celular -->
+  <script>
+    window.onerror = function(message, source, lineno, colno, error) {
+      alert("Error detectado:\nMensaje: " + message + "\nArchivo: " + source + "\nLínea: " + lineno + ":" + colno);
+      return false;
+    };
+    window.addEventListener('unhandledrejection', function(event) {
+      alert("Promesa rechazada no manejada:\nMotivo: " + event.reason);
+    });
+  </script>
+  <script type="module" crossorigin src="/DRPLUS/assets/index-DlZzhpBd.js"></script>
+  <link rel="stylesheet" crossorigin href="/DRPLUS/assets/index-xFB0L41S.css">
+</head>
+<body>
+  <div id="root"></div>
+  <!-- Script entry point for React -->
+
+  <!-- Registro del Service Worker para PWA (Soporte Offline e Instalable) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((reg) => {
+            console.log('Service Worker registrado con éxito. Scope:', reg.scope);
+          })
+          .catch((err) => {
+            console.error('Error al registrar el Service Worker:', err);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
